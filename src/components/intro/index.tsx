@@ -1,4 +1,5 @@
-import { View, Text, TouchableHighlight, Dimensions } from "react-native";
+import { Text, Dimensions, ImageBackground, View } from "react-native";
+import data from "./dataTest";
 import React from "react";
 import * as C from "./style";
 const IntroSlider = () => {
@@ -9,27 +10,23 @@ const IntroSlider = () => {
     <C.ContainerPageIntro>
       <C.HeaderButtonSkip>
         <C.ButtonSkip>
-          <Text>PULAR</Text>
+          <C.TextSkip>pular</C.TextSkip>
         </C.ButtonSkip>
       </C.HeaderButtonSkip>
       <C.FlatList
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
-        data={[
-          {
-            id: 1,
-            name: "williamaaaaaaaaa",
-          },
-          {
-            id: 2,
-            name: "izadoraaaaaaaa",
-          },
-        ]}
+        data={data}
         renderItem={({ item }: any) => {
           return (
             <C.ContainerItem width={window.width} height={window.height}>
-              <Text>{item.name}</Text>
+              <View style={{ width: "75%" }}>
+                <C.TittleIntro>
+                  {item.tittle} <C.Flag>{item.flag}</C.Flag>
+                </C.TittleIntro>
+              </View>
+              <C.ContainerImage></C.ContainerImage>
             </C.ContainerItem>
           );
         }}
