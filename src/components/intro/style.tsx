@@ -1,5 +1,8 @@
 import styled from "styled-components/native";
 
+interface ItemIntro {
+  width: number;
+}
 export const ContainerPageIntro = styled.View`
   background-color: white;
   flex: 1;
@@ -27,7 +30,7 @@ export const FlatList = styled.FlatList`
 export const ContainerButtons = styled.View`
   width: 100%;
   left: 15px;
-  bottom: 7%;
+  bottom: 5%;
   position: absolute;
   padding: 10px;
   gap: 10px;
@@ -50,4 +53,11 @@ export const ButtonPrev = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   background-color: white;
+`;
+export const ContainerItem = styled.View`
+  background-color: grey;
+  align-items: center;
+  justify-content: flex-end;
+  width: ${({ width }: { width: number }) => width - 30};
+  height: 100%;
 `;
