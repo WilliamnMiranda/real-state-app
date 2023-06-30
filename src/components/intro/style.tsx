@@ -30,6 +30,18 @@ export const TextSkip = styled.Text`
 `;
 export const FlatList = styled.FlatList`
   flex: 1;
+  gap: 20px;
+`;
+export const ContainerItem = styled.View`
+  padding-top: 20px;
+  align-items: center;
+  justify-content: flex-start;
+  width: ${({ width }: { width: number }) => width - 40};
+  height: 100%;
+  gap: 20px;
+`;
+export const ContainerText = styled.View`
+  width: 100%;
 `;
 export const ContainerButtons = styled.View`
   width: 100%;
@@ -58,28 +70,22 @@ export const ButtonPrev = styled.TouchableOpacity`
   justify-content: center;
   background-color: white;
 `;
-export const ContainerItem = styled.View`
-  padding-top: 20px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: ${({ width }: { width: number }) => width - 40};
-  height: 100%;
-  gap: 40px;
-`;
+
 export const TittleIntro = styled.Text`
-  font-family: "Lato_400Regular";
+  font-family: "Inter_400Regular";
   font-size: 20;
-  line-height: 35;
-  letter-spacing: 1px;
-  width: 100%;
+  letter-spacing: 2px;
+  line-height: 30;
+  width: 80%;
 `;
-export const ContainerImage = styled.View`
+export const ContainerImage = styled.Image`
   flex: 1;
-  width: 100%;
+  width: 95%;
   border-radius: 50px;
   background-color: orange;
 `;
 export const Flag = styled.Text`
   color: #0f3e5e;
   font-family: "Lato_900Black";
+  gap: 20px;
 `;

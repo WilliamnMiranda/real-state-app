@@ -8,7 +8,12 @@ import {
   Poppins_600SemiBold,
   Poppins_300Light,
 } from "@expo-google-fonts/poppins";
-import { Lato_400Regular, Lato_900Black } from "@expo-google-fonts/lato";
+import {
+  Lato_400Regular,
+  Lato_900Black,
+  Lato_300Light,
+} from "@expo-google-fonts/lato";
+import { Inter_400Regular } from "@expo-google-fonts/inter";
 import { useCallback } from "react";
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -17,6 +22,7 @@ export default function App() {
     Poppins_300Light,
     Lato_400Regular,
     Lato_900Black,
+    Inter_400Regular,
   });
 
   const onLayoutRootView = useCallback(async () => {

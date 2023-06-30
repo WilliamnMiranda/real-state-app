@@ -1,11 +1,11 @@
-import { Text, Dimensions, ImageBackground, View } from "react-native";
+import { Text, Dimensions, ImageBackground, View, Image } from "react-native";
 import data from "./dataTest";
 import React from "react";
+import Rectangle6 from "../../assets/intro/Rectangle6.svg";
 import * as C from "./style";
 const IntroSlider = () => {
   const window = Dimensions.get("window");
-  console.log(window.width);
-  console.log(window.width - 15);
+  console.log(Rectangle6 + "aa");
   return (
     <C.ContainerPageIntro>
       <C.HeaderButtonSkip>
@@ -21,12 +21,12 @@ const IntroSlider = () => {
         renderItem={({ item }: any) => {
           return (
             <C.ContainerItem width={window.width} height={window.height}>
-              <View style={{ width: "75%" }}>
+              <C.ContainerText>
                 <C.TittleIntro>
-                  {item.tittle} <C.Flag>{item.flag}</C.Flag>
+                  {item.title} <C.Flag>{item.flag}</C.Flag>
                 </C.TittleIntro>
-              </View>
-              <C.ContainerImage></C.ContainerImage>
+              </C.ContainerText>
+              <C.ContainerImage source={item.image}></C.ContainerImage>
             </C.ContainerItem>
           );
         }}
