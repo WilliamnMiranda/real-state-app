@@ -38,6 +38,13 @@ const IntroSlider = () => {
         horizontal
         ref={flatListRef}
         pagingEnabled
+        onMomentumScrollEnd={(e) => {
+          const x = e.nativeEvent.contentOffset.x;
+          const value = Number((x / window.width).toFixed(0));
+          if (value == 3) return;
+          setCurrentIndex(value);
+          console.log(value);
+        }}
         showsHorizontalScrollIndicator={false}
         data={data}
         renderItem={({ item }: any) => {
@@ -56,12 +63,16 @@ const IntroSlider = () => {
       />
       <C.ContainerButtons currentIndex={0}>
         {currentIndex > 0 && (
-          <C.ButtonPrev onPress={() => prevIndex.()}>
+          <C.ButtonPrev onPress={() => prevIndex()}>
             <Icon name="arrow-left" size={18} color="black" />
           </C.ButtonPrev>
         )}
-        {currentIndex < 2 && (
-          <C.ButtonNext onPress={() => nextIndex()}>
+        {currentIndex < 3 && (
+          <C.ButtonNext
+            onPress={
+              currentIndex == 2 ? () => console.log("login") : () => nextIndex()
+            }
+          >
             <Text>Proximo</Text>
           </C.ButtonNext>
         )}
