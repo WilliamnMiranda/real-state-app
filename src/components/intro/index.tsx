@@ -3,26 +3,16 @@ import data from "./dataTest";
 import React, { useRef, useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import * as C from "./style";
+import useIntro from "../../hooks/useIntro";
 const IntroSlider = () => {
-  const window = Dimensions.get("window");
-  const flatListRef = useRef<FlatList>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextIndex = () => {
-    setCurrentIndex((currentIndex) => currentIndex + 1);
-    flatListRef.current?.scrollToIndex({
-      animated: true,
-      index: currentIndex + 1,
-    });
-  };
-
-  const prevIndex = () => {
-    setCurrentIndex((currentIndex) => currentIndex - 1);
-    flatListRef.current?.scrollToIndex({
-      animated: true,
-      index: currentIndex - 1,
-    });
-  };
+  const {
+    nextIndex,
+    prevIndex,
+    flatListRef,
+    currentIndex,
+    momentumScrollEnd,
+    window,
+  } = useIntro();
   return (
     <C.ContainerPageIntro>
       <C.HeaderButtonSkip>
@@ -38,13 +28,7 @@ const IntroSlider = () => {
         horizontal
         ref={flatListRef}
         pagingEnabled
-        onMomentumScrollEnd={(e) => {
-          const x = e.nativeEvent.contentOffset.x;
-          const value = Number((x / window.width).toFixed(0));
-          if (value == 3) return;
-          setCurrentIndex(value);
-          console.log(value);
-        }}
+        onMomentumScrollEnd={(e) => momentumScrollEnd(e)}
         showsHorizontalScrollIndicator={false}
         data={data}
         renderItem={({ item }: any) => {
