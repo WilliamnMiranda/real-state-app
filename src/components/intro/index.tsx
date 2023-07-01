@@ -1,11 +1,11 @@
 import { Text, Dimensions, ImageBackground, View, Image } from "react-native";
 import data from "./dataTest";
-import React from "react";
-import Rectangle6 from "../../assets/intro/Rectangle6.svg";
+import React, { useState } from "react";
+import Icon from "react-native-vector-icons/FontAwesome5";
 import * as C from "./style";
 const IntroSlider = () => {
   const window = Dimensions.get("window");
-  console.log(Rectangle6 + "aa");
+  const [currentIndex, setCurrentIndex] = useState(0);
   return (
     <C.ContainerPageIntro>
       <C.HeaderButtonSkip>
@@ -25,16 +25,19 @@ const IntroSlider = () => {
                 <C.TittleIntro>
                   {item.title} <C.Flag>{item.flag}</C.Flag>
                 </C.TittleIntro>
+                <C.AltText>{item.description}</C.AltText>
               </C.ContainerText>
               <C.ContainerImage source={item.image}></C.ContainerImage>
             </C.ContainerItem>
           );
         }}
       />
-      <C.ContainerButtons>
-        <C.ButtonPrev>
-          <Text>O--</Text>
-        </C.ButtonPrev>
+      <C.ContainerButtons currentIndex={0}>
+        {currentIndex > 0 && (
+          <C.ButtonPrev>
+            <Icon name="arrow-left" size={18} color="black" />
+          </C.ButtonPrev>
+        )}
         <C.ButtonNext>
           <Text>Proximo</Text>
         </C.ButtonNext>

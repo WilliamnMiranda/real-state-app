@@ -1,7 +1,11 @@
 import styled from "styled-components/native";
 
-interface ItemIntro {
+interface IContainerButtons {
+  currentIndex: number;
+}
+interface IContainerIntem {
   width: number;
+  height: number;
 }
 export const ContainerPageIntro = styled.View`
   background-color: white;
@@ -32,7 +36,7 @@ export const FlatList = styled.FlatList`
   flex: 1;
   gap: 20px;
 `;
-export const ContainerItem = styled.View`
+export const ContainerItem = styled.View<IContainerIntem>`
   padding-top: 20px;
   align-items: center;
   justify-content: flex-start;
@@ -42,8 +46,9 @@ export const ContainerItem = styled.View`
 `;
 export const ContainerText = styled.View`
   width: 100%;
+  gap: 20px;
 `;
-export const ContainerButtons = styled.View`
+export const ContainerButtons = styled.View<IContainerButtons>`
   width: 100%;
   left: 20px;
   bottom: 5%;
@@ -51,7 +56,8 @@ export const ContainerButtons = styled.View`
   padding: 10px 30px;
   gap: 10px;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: ${({ currentIndex }) =>
+    currentIndex ? "space-between" : "center"};
   align-items: center;
 `;
 export const ButtonNext = styled.TouchableOpacity`
@@ -76,7 +82,7 @@ export const TittleIntro = styled.Text`
   font-size: 20;
   letter-spacing: 2px;
   line-height: 30;
-  width: 80%;
+  width: 85%;
 `;
 export const ContainerImage = styled.Image`
   flex: 1;
@@ -88,4 +94,11 @@ export const Flag = styled.Text`
   color: #0f3e5e;
   font-family: "Lato_900Black";
   gap: 20px;
+`;
+
+export const AltText = styled.Text`
+  width: 75%;
+  font-family: "Lato_400Regular";
+  color: #53587a;
+  margin-bottom: 20px;
 `;
