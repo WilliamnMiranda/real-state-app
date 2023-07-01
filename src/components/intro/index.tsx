@@ -1,11 +1,28 @@
-import { Text, Dimensions, ImageBackground, View, Image } from "react-native";
+import { Text, Dimensions, FlatList } from "react-native";
 import data from "./dataTest";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import * as C from "./style";
 const IntroSlider = () => {
   const window = Dimensions.get("window");
+  const flatListRef = useRef<FlatList>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextIndex = () => {
+    setCurrentIndex((currentIndex) => currentIndex + 1);
+    flatListRef.current?.scrollToIndex({
+      animated: true,
+      index: currentIndex + 1,
+    });
+  };
+
+  const prevIndex = () => {
+    setCurrentIndex((currentIndex) => currentIndex - 1);
+    flatListRef.current?.scrollToIndex({
+      animated: true,
+      index: currentIndex - 1,
+    });
+  };
   return (
     <C.ContainerPageIntro>
       <C.HeaderButtonSkip>
@@ -13,8 +30,13 @@ const IntroSlider = () => {
           <C.TextSkip>pular</C.TextSkip>
         </C.ButtonSkip>
       </C.HeaderButtonSkip>
-      <C.FlatList
+      <FlatList
+        style={{
+          flex: 1,
+          gap: 20,
+        }}
         horizontal
+        ref={flatListRef}
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         data={data}
@@ -34,13 +56,15 @@ const IntroSlider = () => {
       />
       <C.ContainerButtons currentIndex={0}>
         {currentIndex > 0 && (
-          <C.ButtonPrev>
+          <C.ButtonPrev onPress={() => prevIndex.()}>
             <Icon name="arrow-left" size={18} color="black" />
           </C.ButtonPrev>
         )}
-        <C.ButtonNext>
-          <Text>Proximo</Text>
-        </C.ButtonNext>
+        {currentIndex < 2 && (
+          <C.ButtonNext onPress={() => nextIndex()}>
+            <Text>Proximo</Text>
+          </C.ButtonNext>
+        )}
       </C.ContainerButtons>
     </C.ContainerPageIntro>
   );
