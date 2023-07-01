@@ -54,7 +54,7 @@ export const ContainerButtons = styled.View<IContainerButtons>`
   bottom: 5%;
   position: absolute;
   padding: 10px 30px;
-  gap: 10px;
+  gap: 40px;
   flex-direction: row;
   justify-content: ${({ currentIndex }) =>
     currentIndex ? "space-between" : "center"};
