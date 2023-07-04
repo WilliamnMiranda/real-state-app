@@ -1,10 +1,14 @@
 import { Text, Dimensions, FlatList } from "react-native";
 import data from "./dataTest";
-import React, { useRef, useState } from "react";
+import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import * as C from "./style";
 import useIntro from "../../hooks/useIntro";
-const IntroSlider = () => {
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../type/LoginType";
+
+type ProfileProps = NativeStackScreenProps<RootStackParamList, "Intro">;
+const IntroSlider = ({ navigation }: ProfileProps) => {
   const {
     nextIndex,
     prevIndex,
@@ -13,10 +17,11 @@ const IntroSlider = () => {
     momentumScrollEnd,
     window,
   } = useIntro();
+  console.log(navigation);
   return (
     <C.ContainerPageIntro>
       <C.HeaderButtonSkip>
-        <C.ButtonSkip>
+        <C.ButtonSkip onPress={() => navigation.navigate("Login")}>
           <C.TextSkip>pular</C.TextSkip>
         </C.ButtonSkip>
       </C.HeaderButtonSkip>

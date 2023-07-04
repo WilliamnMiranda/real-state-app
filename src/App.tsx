@@ -1,6 +1,7 @@
+import "react-native-gesture-handler";
 import { StatusBar } from "react-native";
-import { StyleSheet, Text, View } from "react-native";
-import IntroSlider from "./components/intro";
+import { StyleSheet, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import {
@@ -15,6 +16,7 @@ import {
 } from "@expo-google-fonts/lato";
 import { Inter_400Regular } from "@expo-google-fonts/inter";
 import { useCallback } from "react";
+import Navigation from "./navigation";
 export default function App() {
   const [fontsLoaded] = useFonts({
     Poppins_700Bold,
@@ -34,11 +36,12 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
       <StatusBar />
-      <IntroSlider />
+      <NavigationContainer>
+        <Navigation />
+      </NavigationContainer>
     </View>
   );
 }
