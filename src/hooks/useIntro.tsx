@@ -1,10 +1,9 @@
 import { useRef, useState } from "react";
-import { Dimensions, FlatList } from "react-native";
-
+import { FlatList } from "react-native";
+import { WIDTH_DEVICE } from "../configs/responsiveConfigs";
 const useIntro = () => {
   const flatListRef = useRef<FlatList>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const window = Dimensions.get("window");
   const nextIndex = () => {
     setCurrentIndex((currentIndex) => currentIndex + 1);
     flatListRef.current?.scrollToIndex({
@@ -14,7 +13,7 @@ const useIntro = () => {
   };
   const momentumScrollEnd = (e: any) => {
     const x = e.nativeEvent.contentOffset.x;
-    const value = Number((x / window.width).toFixed(0));
+    const value = Number((x / WIDTH_DEVICE).toFixed(0));
     if (value == 3) return;
     setCurrentIndex(value);
   };
@@ -32,7 +31,6 @@ const useIntro = () => {
     setCurrentIndex,
     currentIndex,
     momentumScrollEnd,
-    window,
   };
 };
 

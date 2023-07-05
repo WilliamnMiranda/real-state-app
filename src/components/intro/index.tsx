@@ -1,4 +1,4 @@
-import { Text, Dimensions, FlatList } from "react-native";
+import { Text, FlatList } from "react-native";
 import data from "./dataTest";
 import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome5";
@@ -6,22 +6,16 @@ import * as C from "./style";
 import useIntro from "../../hooks/useIntro";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../type/LoginType";
-
+import { WIDTH_DEVICE, HEIGHT_DEVICE } from "../../configs/responsiveConfigs";
 type ProfileProps = NativeStackScreenProps<RootStackParamList, "Intro">;
 const IntroSlider = ({ navigation }: ProfileProps) => {
-  const {
-    nextIndex,
-    prevIndex,
-    flatListRef,
-    currentIndex,
-    momentumScrollEnd,
-    window,
-  } = useIntro();
+  const { nextIndex, prevIndex, flatListRef, currentIndex, momentumScrollEnd } =
+    useIntro();
   console.log(navigation);
   return (
     <C.ContainerPageIntro>
       <C.HeaderButtonSkip>
-        <C.ButtonSkip onPress={() => navigation.navigate("Login")}>
+        <C.ButtonSkip onPress={() => navigation.navigate("Explore")}>
           <C.TextSkip>pular</C.TextSkip>
         </C.ButtonSkip>
       </C.HeaderButtonSkip>
@@ -38,7 +32,7 @@ const IntroSlider = ({ navigation }: ProfileProps) => {
         data={data}
         renderItem={({ item }: any) => {
           return (
-            <C.ContainerItem width={window.width} height={window.height}>
+            <C.ContainerItem width={WIDTH_DEVICE} height={HEIGHT_DEVICE}>
               <C.ContainerText>
                 <C.TittleIntro>
                   {item.title} <C.Flag>{item.flag}</C.Flag>
@@ -59,7 +53,9 @@ const IntroSlider = ({ navigation }: ProfileProps) => {
         {currentIndex < 3 && (
           <C.ButtonNext
             onPress={
-              currentIndex == 2 ? () => console.log("login") : () => nextIndex()
+              currentIndex == 2
+                ? () => navigation.navigate("Explore")
+                : () => nextIndex()
             }
           >
             <Text>Proximo</Text>

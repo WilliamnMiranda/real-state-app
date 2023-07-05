@@ -1,7 +1,7 @@
 import React from "react";
 import { Text } from "react-native";
 function LoginScreen() {
-  return <Text>LoginScreen</Text>;
+  return <Text>d</Text>;
 }
 
 export default LoginScreen;
