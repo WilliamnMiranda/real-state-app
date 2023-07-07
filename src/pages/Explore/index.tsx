@@ -6,9 +6,8 @@ import Image3 from "../../assets/explorer/Rectangle9.png";
 import Image4 from "../../assets/explorer/Rectangle10.png";
 import Image2 from "../../assets/explorer/Rectangle11.png";
 import { PADDING_CONTAINER_MAIN_PAGES } from "../../configs/responsiveConfigs";
-import Facebook from "../../assets/icons/Facebook.svg";
-import Google from "../../assets/icons/Google.svg";
 import Email from "../../assets/icons/Email.svg";
+import BottomLogin from "../../components/bottom_login";
 function Explore() {
   console.log(PADDING_CONTAINER_MAIN_PAGES);
   return (
@@ -37,20 +36,7 @@ function Explore() {
         </C.ContainerOr>
       </C.LineOr>
 
-      <C.ContainerSocialsLogin>
-        <C.TemplateButtonSocial>
-          <C.IconSocial>
-            <Facebook />
-          </C.IconSocial>
-          <C.NameSocial>Continuar com Facebook</C.NameSocial>
-        </C.TemplateButtonSocial>
-        <C.TemplateButtonSocial>
-          <C.IconSocial>
-            <Google />
-          </C.IconSocial>
-          <C.NameSocial>Continuar com Facebook</C.NameSocial>
-        </C.TemplateButtonSocial>
-      </C.ContainerSocialsLogin>
+      <BottomLogin />
     </C.ContainerExplore>
   );
 }
