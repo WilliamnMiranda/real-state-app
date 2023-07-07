@@ -8,11 +8,13 @@ import {
   Poppins_700Bold,
   Poppins_600SemiBold,
   Poppins_300Light,
+  Poppins_400Regular,
 } from "@expo-google-fonts/poppins";
 import {
   Lato_400Regular,
   Lato_900Black,
   Lato_300Light,
+  Lato_700Bold,
 } from "@expo-google-fonts/lato";
 import { Inter_400Regular } from "@expo-google-fonts/inter";
 import { useCallback } from "react";
@@ -21,9 +23,12 @@ export default function App() {
   const [fontsLoaded] = useFonts({
     Poppins_700Bold,
     Poppins_600SemiBold,
+    Poppins_400Regular,
     Poppins_300Light,
     Lato_400Regular,
     Lato_900Black,
+    Lato_300Light,
+    Lato_700Bold,
     Inter_400Regular,
   });
 

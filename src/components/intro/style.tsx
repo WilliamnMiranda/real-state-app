@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { PADDING_CONTAINER_MAIN_PAGES } from "../../configs/responsiveConfigs";
 
 interface IContainerButtons {
   currentIndex: number;
@@ -11,7 +12,7 @@ export const ContainerPageIntro = styled.View`
   background-color: white;
   flex: 1;
   gap: 10px;
-  padding: 15px 20px;
+  padding: 15px ${PADDING_CONTAINER_MAIN_PAGES};
   position: relative;
 `;
 export const HeaderButtonSkip = styled.View`
