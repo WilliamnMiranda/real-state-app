@@ -1,5 +1,4 @@
 import React from "react";
-import { Text } from "react-native";
 import * as C from "./style";
 import Image1 from "../../assets/explorer/Rectangle8.png";
 import Image3 from "../../assets/explorer/Rectangle9.png";
@@ -8,7 +7,11 @@ import Image2 from "../../assets/explorer/Rectangle11.png";
 import { PADDING_CONTAINER_MAIN_PAGES } from "../../configs/responsiveConfigs";
 import Email from "../../assets/icons/Email.svg";
 import BottomLogin from "../../components/bottom_login";
-function Explore() {
+import { RootStackParamList } from "../../type/LoginType";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import LineOr from "../../components/lineOr";
+type ProfileProps = NativeStackScreenProps<RootStackParamList, "Explore">;
+function Explore({ navigation }: ProfileProps) {
   console.log(PADDING_CONTAINER_MAIN_PAGES);
   return (
     <C.ContainerExplore>
@@ -24,18 +27,12 @@ function Explore() {
       <C.ContainerButtonLoginEmail>
         <C.ButtonLoginEmail>
           <Email />
-          <C.TextButtonLoginEmail>
+          <C.TextButtonLoginEmail onPress={() => navigation.navigate("Login")}>
             Continue com seu email
           </C.TextButtonLoginEmail>
         </C.ButtonLoginEmail>
       </C.ContainerButtonLoginEmail>
-
-      <C.LineOr>
-        <C.ContainerOr>
-          <C.TextOr>OU</C.TextOr>
-        </C.ContainerOr>
-      </C.LineOr>
-
+      <LineOr />
       <BottomLogin />
     </C.ContainerExplore>
   );
